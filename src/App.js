@@ -11,18 +11,18 @@ import ImageLink from './components/imageLink/ImageLink.js';
 
 const initialState= {
       input: '',
-          imageUrl:'',
-          boundingBox:{},
-          route: 'signin',
-          isSignedIn : false,
-          user: {
-             id: '',
-             name: '',
-             email: '',
-             password: '',
-             entry: '',
-             joinedOn: ''
-          }
+      imageUrl:'',
+      boundingBox:{},
+      route: 'signin',
+      isSignedIn : false,
+      user: {
+         id: '',
+         name: '',
+         email: '',
+         password: '',
+         entry: '',
+         joinedOn: ''
+      }
   }
 
 class App extends Component {
@@ -58,6 +58,9 @@ class App extends Component {
   }
 
   onPictureSubmit = () => {
+    if(this.state.input ===''){
+      return alert("enter the url");
+    }
     this.setState({imageUrl: this.state.input});
     fetch('https://arcane-hollows-77933.herokuapp.com/imageurl',{
                 method: 'post',
